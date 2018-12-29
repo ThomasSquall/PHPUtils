@@ -1,0 +1,20 @@
+{
+    "name": "thomas-squall/utils",
+    "description": "Generic Utilities for PHP",
+    "version": "0.5.0",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Thomas Cocchiara",
+            "email": "thomas.cocchiara@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "thomas-squall/string-utils": "^0.5.5"
+    },
+    "autoload": {
+        "files": ["src/Utils.php"]
+    }
+}
