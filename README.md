@@ -5,6 +5,8 @@
 1) [array_to_object](#array_to_object)
 2) [json_to_object](#json_to_object)
 3) [parse_args](#parse_args)
+4) [get](#get)
+5) [dispose](#dispose)
 
 #### Other contained Repositories
 
@@ -29,8 +31,7 @@ Where:
 #### Usage
 
 ``` php
-class Person
-{
+class Person {
     public $name;
     public $age;
 }
@@ -72,8 +73,7 @@ Where:
 #### Usage
 
 ``` php
-class Person
-{
+class Person {
     public $name;
     public $age;
 }
@@ -131,6 +131,58 @@ This will print:
 
 ``` sh
 Array ( [name] => MyRealName [surname] => MyRealSurname [age] => 27 )
+```
+
+### get
+
+#### Description
+Checks if the provided value is empty and, if it is, the default value will be returned. The value itself will be returned otherwise.
+
+#### Definition
+
+get($value, $default = "")
+
+Where:
+1) $value is the value to be checked to be empty or not
+2) $default is the value to pass in case the first is empty. Defaulted to empty string
+
+#### Usage
+
+``` php
+$value = "";
+
+echo get($value, "hello");
+```
+
+This will print:
+
+``` sh
+hello
+```
+
+### dispose
+
+#### Description
+
+Disposes any item.
+
+#### Definition
+
+dispose(&$item)
+
+Where:
+1) $item is the item to be disposes
+
+#### Usage
+
+``` php
+$array = [
+    "Hello",
+    " ",
+    "world"
+];
+
+dispose($array);
 ```
 
 ## More utilities coming

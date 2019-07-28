@@ -8,8 +8,7 @@
  * @param bool $add_not_existing_properties
  * @return object
  */
-function array_to_object($array, $object, $add_not_existing_properties = false)
-{
+function array_to_object($array, $object, $add_not_existing_properties = false) {
     return json_to_object(json_encode($array), $object, $add_not_existing_properties);
 }
 
@@ -21,8 +20,7 @@ function array_to_object($array, $object, $add_not_existing_properties = false)
  * @param bool $add_not_existing_properties
  * @return object
  */
-function json_to_object($json, $object, $add_not_existing_properties = false)
-{
+function json_to_object($json, $object, $add_not_existing_properties = false) {
     $data = json_decode($json, true);
 
     $class = $object;
@@ -32,8 +30,7 @@ function json_to_object($json, $object, $add_not_existing_properties = false)
 
     $object = new $class();
 
-    foreach ($data as $key => $value)
-    {
+    foreach ($data as $key => $value) {
         if (!(property_exists($object, $key) || $add_not_existing_properties))
             continue;
 
@@ -50,8 +47,7 @@ function json_to_object($json, $object, $add_not_existing_properties = false)
  * @param array $defaults
  * @return array
  */
-function parse_args($options, $defaults)
-{
+function parse_args($options, $defaults) {
     if (is_null($options)) $options = [];
     elseif (is_object($options)) $options = (array)$options;
     elseif (!is_array($options)) $options = [];
@@ -70,10 +66,8 @@ function parse_args($options, $defaults)
                 unset($options[$k]);
             elseif (is_string($v) && ($v==='') && isset($defaults[$k]) && is_array($defaults[$k]))
                 unset($options[$k]);
-            else
-            {
-                if (is_array($v))
-                {
+            else {
+                if (is_array($v)) {
                     $recursiveDefaults=$defaults[$k];
                     $options[$k]=parse_args($v, $recursiveDefaults);
                 }
@@ -85,4 +79,24 @@ function parse_args($options, $defaults)
         $options[$k]=$v;
 
     return $options;
+}
+
+/**
+ * Checks if the provided value is empty and, if it is, the default
+ * value will be returned. The value itself will be returned otherwise.
+ * @param mixed $value
+ * @param mixed $default
+ * @return mixed
+ */
+function get($value, $default = "") {
+    return empty($value) ? $default : $value;
+}
+
+/**
+ * Disposes any item.
+ * @param mixed $item
+ */
+function dispose(&$item) {
+    unset($item);
+    $item = null;
 }
