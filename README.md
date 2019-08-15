@@ -7,10 +7,11 @@
 3) [parse_args](#parse_args)
 4) [get](#get)
 5) [dispose](#dispose)
-
+6) [is_cli](#is_cli)
 #### Other contained Repositories
 
 1) [String utils](https://github.com/ThomasSquall/PHPStringUtils)
+1) [File utils](https://github.com/ThomasSquall/PHPFileUtils)
 
 ### array_to_object
 
@@ -185,4 +186,123 @@ $array = [
 dispose($array);
 ```
 
-## More utilities coming
+### is_cli
+
+#### Description
+
+Returns true if the script is running in the cli or not.
+
+#### Definition
+
+is_cli()
+
+#### Usage
+
+``` php
+if (is_cli())
+    echo "This script is running in the shell";
+else
+    echo "This script is not running in the shell";
+```
+
+### require_all_files
+
+#### Description
+
+Requires all the files in a folder that matches the provided pattern.
+
+#### Definition
+
+require_all_files($dir, $pattern = "*.php", $callback = null)
+
+Where:
+1) $dir is the directory where the files are located
+2) $pattern is the pattern used to find the files (*.php by default)
+3) $callback is the callback called per each file (null by default, the file path will be passed as parameter)
+
+#### Usage
+
+``` php
+function callback($file) {
+    echo "file $file has been loaded..." . EOF;
+}
+
+require_all_fields("my/dir", "*.php", "callback");
+```
+
+### require_once_all_files
+
+#### Description
+
+Requires once all the files in a folder that matches the provided pattern.
+
+#### Definition
+
+require_once_all_files($dir, $pattern = "*.php", $callback = null)
+
+Where:
+1) $dir is the directory where the files are located
+2) $pattern is the pattern used to find the files (*.php by default)
+3) $callback is the callback called per each file (null by default, the file path will be passed as parameter)
+
+#### Usage
+
+``` php
+function callback($file) {
+    echo "file $file has been loaded..." . EOF;
+}
+
+require_once_all_fields("my/dir", "*.php", "callback");
+```
+
+### include_all_files
+
+#### Description
+
+Includes all the files in a folder that matches the provided pattern.
+
+#### Definition
+
+include_all_files($dir, $pattern = "*.php", $callback = null)
+
+Where:
+1) $dir is the directory where the files are located
+2) $pattern is the pattern used to find the files (*.php by default)
+3) $callback is the callback called per each file (null by default, the file path will be passed as parameter)
+
+#### Usage
+
+``` php
+function callback($file) {
+    echo "file $file has been loaded..." . EOF;
+}
+
+include_all_fields("my/dir", "*.php", "callback");
+```
+
+### include_once_all_files
+
+#### Description
+
+Includes once all the files in a folder that matches the provided pattern.
+
+#### Definition
+
+include_once_all_files($dir, $pattern = "*.php", $callback = null)
+
+Where:
+1) $dir is the directory where the files are located
+2) $pattern is the pattern used to find the files (*.php by default)
+3) $callback is the callback called per each file (null by default, the file path will be passed as parameter)
+
+#### Usage
+
+``` php
+function callback($file) {
+    echo "file $file has been loaded..." . EOF;
+}
+
+include_once_all_files("my/dir", "*.php", "callback");
+```
+
+## More utilities coming...
