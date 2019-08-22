@@ -56,23 +56,23 @@ function parse_args($options, $defaults) {
     elseif (is_object($defaults)) $defaults = (array)$defaults;
     elseif (!is_array($defaults)) $defaults = [];
 
-    foreach ($defaults as $k=>$v)
+    foreach ($defaults as $k => $v)
         if (is_null($v))
-            dispose($defaults[$k]);
+            unset($defaults[$k]);
 
-    foreach ($options as $k=>$v)
+    foreach ($options as $k => $v)
         if (isset($defaults[$k]))
             if (is_null($v))
-                dispose($options[$k]);
+                unset($options[$k]);
             elseif (is_string($v) && ($v === '') && isset($defaults[$k]) && is_array($defaults[$k]))
-                dispose($options[$k]);
+                unset($options[$k]);
             else {
                 if (is_array($v)) {
                     $recursiveDefaults = $defaults[$k];
                     $options[$k] = parse_args($v, $recursiveDefaults);
                 }
 
-                dispose($defaults[$k]);
+                unset($defaults[$k]);
             }
 
     foreach ($defaults as $k => $v)

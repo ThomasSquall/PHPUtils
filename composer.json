@@ -1,7 +1,7 @@
 {
     "name": "thomas-squall/utils",
     "description": "Generic Utilities for PHP",
-    "version": "0.6.2",
+    "version": "0.6.3",
     "type": "library",
     "license": "MIT",
     "authors": [
