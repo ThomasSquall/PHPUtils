@@ -1,4 +1,4 @@
-# File Utils for php
+# Utils for php
 
 ## List of available functions
 
